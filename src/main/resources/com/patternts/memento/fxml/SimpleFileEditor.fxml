@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.patternts.memento.controller.TextEditorController">
+    <top>
+        <MenuBar>
+            <Menu text="File">
+                <MenuItem onAction="#openFile" text="Open" />
+                <MenuItem onAction="#saveFile" text="Save" />
+                <MenuItem text="Close" />
+            </Menu>
+        </MenuBar>
+    </top>
+    <center>
+        <AnchorPane prefHeight="410.0" prefWidth="997.0">
+            <TextArea fx:id="textArea" layoutX="-23.0" prefHeight="400.0" prefWidth="781.0" text="Load a text file using the menu" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="211.0" AnchorPane.topAnchor="5.0" />
+         <Label layoutX="877.0" layoutY="-3.0" text="Saved" />
+         <ScrollPane layoutX="803.0" layoutY="21.0" prefHeight="383.0" prefWidth="180.0">
+           <content>
+             <AnchorPane id="saved" minHeight="0.0" minWidth="0.0" prefHeight="383.0" prefWidth="168.0">
+                  <children>
+                     <VBox fx:id="savedFiles" layoutX="3.0" layoutY="14.0" prefHeight="345.0" prefWidth="160.0" />
+                  </children>
+               </AnchorPane>
+           </content>
+         </ScrollPane>
+        </AnchorPane>
+    </center>
+    <bottom>
+        <HBox>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" />
+            </padding>
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                <Label fx:id="statusMessage" prefWidth="150.0" text="Checking for Changes..." />
+                <ProgressBar fx:id="progressBar" prefWidth="150.0" progress="0.0" />
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+            <Button id="saveButton" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="25.0" prefWidth="84.0" text="Save" />
+                <Button fx:id="loadChangesButton" onAction="#loadChanges" text="Load Changes" />
+            </HBox>
+        </HBox>
+    </bottom>
+</BorderPane>
